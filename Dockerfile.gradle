@@ -1,0 +1,14 @@
+FROM java:8-jdk
+
+WORKDIR /gradle
+
+ADD https://services.gradle.org/distributions/gradle-2.11-bin.zip gradle.zip
+
+RUN unzip gradle.zip
+RUN rm gradle.zip
+
+WORKDIR /app
+
+ONBUILD COPY src .
+
+ENTRYPOINT ["/gradle/gradle-2.11/bin/gradle", "--no-daemon"]
