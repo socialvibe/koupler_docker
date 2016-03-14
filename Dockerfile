@@ -4,5 +4,5 @@ WORKDIR /app
 
 ADD koupler.tar ./
 
-ENTRYPOINT ["./koupler.sh", "-http"]
+ENTRYPOINT ["./koupler.sh"]
 EXPOSE 4567
