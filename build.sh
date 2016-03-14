@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -e -x
 HERE="$(pwd)/$(dirname $0)"
 
 if ! [ -d "src" ]
@@ -21,11 +21,11 @@ docker run --rm -it \
 	-v "${HERE}/src/build/distributions:/app/build/distributions" \
 	koupler_build build copyRuntimeLibs batchZip
 
-cd build/distributions
+cd src/build/distributions
 unzip koupler-0.2.5-SNAPSHOT.zip
 cd koupler-0.2.5-SNAPSHOT
 tar -cv * > ../koupler.tar
 
-cd ../../..
+cd ../../../..
 
 docker build -t koupler .
