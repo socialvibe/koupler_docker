@@ -21,11 +21,8 @@ docker run --rm -it \
 	-v "${HERE}/src/build/distributions:/app/build/distributions" \
 	koupler_build build copyRuntimeLibs batchZip
 
-cd src/build/distributions
-unzip koupler-0.2.5-SNAPSHOT.zip
-cd koupler-0.2.5-SNAPSHOT
-tar -cv * > ../koupler.tar
-
-cd ../../../..
+rm -rf koupler-0.2.5-SNAPSHOT
+unzip src/build/distributions/koupler-0.2.5-SNAPSHOT.zip
+tar -cv -C koupler-0.2.5-SNAPSHOT . > koupler.tar
 
 docker build -t koupler .
