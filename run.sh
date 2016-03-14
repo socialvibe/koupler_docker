@@ -19,4 +19,4 @@ then
 	exit 1
 fi
 
-${PRE} docker run --env-file=aws.env --rm -p=4567:"${2}" -it koupler -streamName "${1}"
+${PRE} docker run --env-file=aws.env --rm -p=4567:"${1}" -it koupler -streamName "${2}"
