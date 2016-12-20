@@ -5,7 +5,7 @@ rm -rf build
 
 if ! [ -d "src" ]
 then
-	git clone https://github.com/monetate/koupler.git src
+	git clone https://github.com/ncanning/koupler.git src
 fi
 
 cd src
@@ -17,7 +17,7 @@ docker build -t gradle -f Dockerfile.gradle .
 docker build -t koupler_build -f Dockerfile.build .
 ID="$(docker run -d \
 	-v "${HOME}/.gradle/caches:/root/.gradle/caches" \
-	koupler_build build copyRuntimeLibs batchZip)"
+	koupler_build dist)"
 CODE="$(docker wait "${ID}")"
 
 if [ "${CODE}" != "0" ]
@@ -28,12 +28,12 @@ fi
 
 mkdir -p build
 
-docker cp "${ID}":/app/build/distributions/koupler-0.2.5-SNAPSHOT.zip ./build/koupler.zip
+docker cp "${ID}":/app/build/distributions/koupler-0.2.14-SNAPSHOT.zip ./build/koupler.zip
 docker rm "${ID}"
 
 cd build
 unzip koupler.zip
-tar -cv -C koupler-0.2.5-SNAPSHOT . > koupler.tar
+tar -cv -C koupler-0.2.14-SNAPSHOT . > koupler.tar
 cd ..
 
 docker build -t koupler .

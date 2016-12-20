@@ -13,10 +13,10 @@ then
 	exit 1
 fi
 
-if [ "$#" -ne 2 ]
+if [ "$#" -ne 1 ]
 then
-	echo "Usage: ${0} PORT STREAM_NAME"
+	echo "Usage: ${0} PORT"
 	exit 1
 fi
 
-${PRE} docker run --env-file=aws.env --rm --name "koupler-${2}" -p="${1}":4567 -it $KOUPLER -http -streamName "${2}"
+${PRE} docker run --env-file=aws.env --rm --name "koupler" -p="${1}":4567 -it koupler -http
