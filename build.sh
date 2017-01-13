@@ -1,4 +1,4 @@
-#!/bin/sh -e -x
+#!/bin/sh -ex
 HERE="$(pwd)/$(dirname $0)"
 cd ${HERE}
 rm -rf build
