@@ -36,4 +36,4 @@ unzip koupler.zip
 tar -cv -C koupler-0.2.14-SNAPSHOT . > koupler.tar
 cd ..
 
-docker build -t koupler .
+docker build -t koupler-better .
