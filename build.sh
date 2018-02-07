@@ -5,7 +5,7 @@ rm -rf build
 
 if ! [ -d "src" ]
 then
-	git clone https://github.com/ncanning/koupler.git src
+	git clone https://github.com/socialvibe/koupler.git src
 fi
 
 cd src
